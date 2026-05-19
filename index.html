@@ -135,19 +135,55 @@
 
     /* PROJECTS */
     #projects { background: var(--white); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-    .proj-featured { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; background: var(--accent); border-radius: 4px; padding: 3rem; margin-bottom: 1.5rem; align-items: center; }
-    .proj-featured-badge { font-family: var(--font-mon); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.8rem; }
-    .proj-featured-title { font-family: var(--font-ser); font-size: 2rem; font-weight: 500; color: var(--white); line-height: 1.2; margin-bottom: 1rem; }
-    .proj-featured-desc { font-size: 0.92rem; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 1.5rem; }
+
+    /* Featured cards — shared base */
+    .proj-featured {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      border-radius: 4px; padding: 3rem; margin-bottom: 1.5rem; align-items: center;
+    }
+    .proj-featured.feat-dark { background: var(--accent); }
+    .proj-featured.feat-slate {
+      background: var(--cream); border: 1px solid var(--rule);
+      box-shadow: var(--shadow);
+    }
+    .proj-featured.feat-slate:hover { box-shadow: var(--shadow-l); }
+
+    /* Dark featured (EAB) text */
+    .feat-dark .proj-featured-badge { font-family: var(--font-mon); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.8rem; }
+    .feat-dark .proj-featured-title { font-family: var(--font-ser); font-size: 2rem; font-weight: 500; color: var(--white); line-height: 1.2; margin-bottom: 1rem; }
+    .feat-dark .proj-featured-desc { font-size: 0.92rem; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 1.5rem; }
+    .feat-dark .proj-tags .proj-tag { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.65); }
+    .feat-dark .proj-link-light { font-family: var(--font-san); font-size: 0.82rem; font-weight: 600; color: var(--white); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 0.1rem; transition: gap 0.2s, border-color 0.2s; }
+    .feat-dark .proj-link-light:hover { gap: 0.7rem; border-color: white; }
+    .feat-dark .proj-feat-stats { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 2rem; }
+    .feat-dark .proj-feat-stat { padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .feat-dark .proj-feat-stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .feat-dark .proj-feat-stat-num { font-family: var(--font-ser); font-size: 1.8rem; font-weight: 600; color: var(--white); }
+    .feat-dark .proj-feat-stat-label { font-family: var(--font-mon); font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); text-transform: uppercase; }
+
+    /* Light featured (Slate Grad App) text */
+    .feat-slate .proj-featured-badge { font-family: var(--font-mon); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); opacity: 0.7; margin-bottom: 0.8rem; }
+    .feat-slate .proj-featured-title { font-family: var(--font-ser); font-size: 2rem; font-weight: 500; color: var(--ink); line-height: 1.2; margin-bottom: 0.5rem; }
+    .feat-slate .proj-featured-context { font-family: var(--font-mon); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--amber); margin-bottom: 1rem; }
+    .feat-slate .proj-featured-desc { font-size: 0.92rem; font-weight: 300; color: var(--ink-2); line-height: 1.8; margin-bottom: 1.5rem; }
+    .feat-slate .proj-tags .proj-tag { background: var(--white); border: 1px solid var(--rule); color: var(--ink-3); }
+    .feat-slate .proj-link-dark-feat { font-family: var(--font-san); font-size: 0.82rem; font-weight: 600; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; border-bottom: 1px solid rgba(29,58,95,0.3); padding-bottom: 0.1rem; transition: gap 0.2s, border-color 0.2s; }
+    .feat-slate .proj-link-dark-feat:hover { gap: 0.7rem; border-color: var(--accent); }
+
+    /* Slate stats panel */
+    .feat-slate .proj-feat-stats { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 2rem; box-shadow: var(--shadow); }
+    .feat-slate .proj-feat-stat { padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+    .feat-slate .proj-feat-stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .feat-slate .proj-feat-stat-num { font-family: var(--font-ser); font-size: 1.8rem; font-weight: 600; color: var(--accent); }
+    .feat-slate .proj-feat-stat-label { font-family: var(--font-mon); font-size: 0.65rem; letter-spacing: 0.1em; color: var(--ink-3); text-transform: uppercase; }
+
+    /* Lifecycle steps */
+    .lifecycle { display: flex; flex-direction: column; gap: 0.5rem; margin: 1.2rem 0; }
+    .lifecycle-step { display: flex; align-items: center; gap: 0.7rem; font-size: 0.82rem; font-weight: 300; color: var(--ink-2); }
+    .lifecycle-num { font-family: var(--font-mon); font-size: 0.6rem; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: var(--white); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
     .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
-    .proj-tag { font-family: var(--font-mon); font-size: 0.62rem; padding: 0.2rem 0.55rem; border-radius: 2px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.65); }
-    .proj-link-light { font-family: var(--font-san); font-size: 0.82rem; font-weight: 600; color: var(--white); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 0.1rem; transition: gap 0.2s, border-color 0.2s; }
-    .proj-link-light:hover { gap: 0.7rem; border-color: white; }
-    .proj-feat-stats { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 2rem; }
-    .proj-feat-stat { padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .proj-feat-stat:last-child { border-bottom: none; padding-bottom: 0; }
-    .proj-feat-stat-num { font-family: var(--font-ser); font-size: 1.8rem; font-weight: 600; color: var(--white); }
-    .proj-feat-stat-label { font-family: var(--font-mon); font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); text-transform: uppercase; }
+    .proj-tag { font-family: var(--font-mon); font-size: 0.62rem; padding: 0.2rem 0.55rem; border-radius: 2px; }
     .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
     .proj-card { background: var(--cream); border: 1px solid var(--rule); border-radius: 4px; padding: 1.8rem; display: flex; flex-direction: column; transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s; }
     .proj-card:hover { border-color: var(--accent); box-shadow: var(--shadow-l); transform: translateY(-3px); }
@@ -210,7 +246,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav id="mainNav">
     <a class="nav-logo" href="#">Aswin <em>Lohani</em></a>
     <ul class="nav-links">
@@ -227,55 +262,31 @@
   <section id="hero">
     <div class="hero-left">
       <div class="hero-tag">Business &amp; Application Analyst — Odessa, TX</div>
-      <h1 class="hero-name">
-        Aswin
-        <em>Lohani.</em>
-      </h1>
+      <h1 class="hero-name">Aswin<em>Lohani.</em></h1>
       <div class="hero-rule"></div>
-      <p class="hero-desc">
-        I modernize enterprise systems and drive institutional efficiency in higher education.
-        At University of Texas Permian Basin, I've contributed to <strong>15+ platform initiatives</strong>, helped deliver
-        <strong>$500K in annual savings</strong>, and built the digital infrastructure
-        thousands of students and faculty rely on every day.
-      </p>
+      <p class="hero-desc">I modernize enterprise systems and drive institutional efficiency in higher education. At University of Texas Permian Basin, I've contributed to <strong>15+ platform initiatives</strong>, helped deliver <strong>$500K in annual savings</strong>, and built the digital infrastructure thousands of students and faculty rely on every day.</p>
       <div class="hero-actions">
         <a class="btn btn-dark" href="#projects">View My Work →</a>
         <a class="btn btn-ghost" href="#contact">Let's Talk</a>
       </div>
     </div>
-
     <div class="hero-right">
       <div class="headshot-wrap">
         <div class="headshot-bg"></div>
         <div class="headshot-img">
-          <img src="images/headshot.jpg" alt="Aswin Lohani"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+          <img src="images/headshot.jpg" alt="Aswin Lohani" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
           <div class="headshot-placeholder" style="display:none">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
             <span>Your Photo Here</span>
           </div>
         </div>
         <div class="headshot-label">UTPB · IT Services</div>
       </div>
       <div class="hero-stats">
-        <div class="hstat">
-          <div class="hstat-num">$500K</div>
-          <div class="hstat-label">Annual Savings</div>
-        </div>
-        <div class="hstat">
-          <div class="hstat-num">15+</div>
-          <div class="hstat-label">Initiatives</div>
-        </div>
-        <div class="hstat">
-          <div class="hstat-num">6+</div>
-          <div class="hstat-label">Years in Higher Ed</div>
-        </div>
-        <div class="hstat">
-          <div class="hstat-num">4.13</div>
-          <div class="hstat-label">FY26 Rating / 5.0</div>
-        </div>
+        <div class="hstat"><div class="hstat-num">$500K</div><div class="hstat-label">Annual Savings</div></div>
+        <div class="hstat"><div class="hstat-num">15+</div><div class="hstat-label">Initiatives</div></div>
+        <div class="hstat"><div class="hstat-num">6+</div><div class="hstat-label">Years in Higher Ed</div></div>
+        <div class="hstat"><div class="hstat-num">4.13</div><div class="hstat-label">FY26 Rating / 5.0</div></div>
       </div>
     </div>
   </section>
@@ -302,58 +313,20 @@
           <span class="tag">Tableau</span><span class="tag">Agile / Scrum</span>
         </div>
       </div>
-     <div class="about-cards reveal" style="transition-delay:0.15s">
-
-  <div class="mini-card">
-    <div class="mini-card-label">Education</div>
-
-    <div class="mini-row">
-      <div class="mini-dot amber"></div>
-      <div>
-        <div class="mini-title">M.S. in Computer Science, 2025</div>
-        <div class="mini-sub">University of Texas Permian Basin</div>
+      <div class="about-cards reveal" style="transition-delay:0.15s">
+        <div class="mini-card">
+          <div class="mini-card-label">Education</div>
+          <div class="mini-row"><div class="mini-dot amber"></div><div><div class="mini-title">M.S. in Computer Science, 2025</div><div class="mini-sub">University of Texas Permian Basin</div></div></div>
+          <div class="mini-row"><div class="mini-dot amber"></div><div><div class="mini-title">B.S. Computer Science, 2022</div><div class="mini-sub">UTPB — Minor: Economics</div></div></div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-label">Certifications</div>
+          <div class="mini-row"><div class="mini-dot"></div><div><div class="mini-title">IBM Business Analyst Professional</div><div class="mini-sub">IBM / Coursera — 2025</div></div></div>
+          <div class="mini-row"><div class="mini-dot"></div><div><div class="mini-title">Google Data Analytics Professional</div><div class="mini-sub">Google / Coursera — Oct 2022</div></div></div>
+          <div class="mini-row"><div class="mini-dot"></div><div><div class="mini-title">Microsoft Excel Advanced</div><div class="mini-sub">Microsoft — Dec 2022</div></div></div>
+        </div>
       </div>
     </div>
-
-    <div class="mini-row">
-      <div class="mini-dot amber"></div>
-      <div>
-        <div class="mini-title">B.S. Computer Science, 2022</div>
-        <div class="mini-sub">UTPB — Minor: Economics</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="mini-card">
-    <div class="mini-card-label">Certifications</div>
-
-    <div class="mini-row">
-      <div class="mini-dot"></div>
-      <div>
-        <div class="mini-title">IBM Business Analyst Professional</div>
-        <div class="mini-sub">IBM / Coursera — 2025</div>
-      </div>
-    </div>
-
-    <div class="mini-row">
-      <div class="mini-dot"></div>
-      <div>
-        <div class="mini-title">Google Data Analytics Professional</div>
-        <div class="mini-sub">Google / Coursera — Oct 2022</div>
-      </div>
-    </div>
-
-    <div class="mini-row">
-      <div class="mini-dot"></div>
-      <div>
-        <div class="mini-title">Microsoft Excel Advanced</div>
-        <div class="mini-sub">Microsoft — Dec 2022</div>
-      </div>
-    </div>
-  </div>
-</div></div>
-</div>
-    
   </section>
 
   <!-- SKILLS -->
@@ -365,67 +338,12 @@
       <p class="sec-sub">A cross-disciplinary toolset across enterprise ERP, data analytics, Microsoft Power Platform, and emerging technology.</p>
     </div>
     <div class="skills-grid reveal">
-      <div class="skill-card">
-        <div class="skill-icon">🏛️</div>
-        <div class="skill-title">Enterprise ERP & CRM</div>
-        <div class="skill-pills">
-          <span class="pill">PeopleSoft CS</span><span class="pill">Slate CRM</span>
-          <span class="pill">Stellic</span><span class="pill">Watermark SL&amp;L</span>
-          <span class="pill">Ad Astra</span><span class="pill">Alma</span>
-          <span class="pill">EAB Navigate</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🗄️</div>
-        <div class="skill-title">Database & Development</div>
-        <div class="skill-pills">
-          <span class="pill">SQL</span><span class="pill">MS SQL Server</span>
-          <span class="pill">Python</span><span class="pill">R</span>
-          <span class="pill">JavaScript</span><span class="pill">HTML/CSS</span>
-          <span class="pill">Java</span><span class="pill">NoSQL</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">⚡</div>
-        <div class="skill-title">Microsoft Power Platform</div>
-        <div class="skill-pills">
-          <span class="pill">Power BI</span>
-          <span class="pill">Power Automate</span>
-          <span class="pill">Power Apps</span>
-          <span class="pill">Excel Power Query</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">📊</div>
-        <div class="skill-title">Data & Analytics</div>
-        <div class="skill-pills">
-          <span class="pill">Tableau</span><span class="pill">ArcGIS</span>
-          <span class="pill">pandas</span><span class="pill">NumPy</span>
-          <span class="pill">scikit-learn</span><span class="pill">Streamlit</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">⚙️</div>
-        <div class="skill-title">Methods & Process</div>
-        <div class="skill-pills">
-          <span class="pill">Business Analysis</span>
-          <span class="pill">Agile / Scrum</span><span class="pill">UAT</span>
-          <span class="pill">Requirements Elicitation</span>
-          <span class="pill">System Integration</span>
-          <span class="pill">Process Automation</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🤖</div>
-        <div class="skill-title">AI & Emerging Tech</div>
-        <div class="skill-pills">
-          <span class="pill">AI Chatbot Dev</span>
-          <span class="pill">Transcript OCR</span>
-          <span class="pill">Machine Learning</span>
-          <span class="pill">NLP</span>
-          <span class="pill">OpenCV</span>
-        </div>
-      </div>
+      <div class="skill-card"><div class="skill-icon">🏛️</div><div class="skill-title">Enterprise ERP & CRM</div><div class="skill-pills"><span class="pill">PeopleSoft CS</span><span class="pill">Slate CRM</span><span class="pill">Stellic</span><span class="pill">Watermark SL&amp;L</span><span class="pill">Ad Astra</span><span class="pill">Alma</span><span class="pill">EAB Navigate</span></div></div>
+      <div class="skill-card"><div class="skill-icon">🗄️</div><div class="skill-title">Database & Development</div><div class="skill-pills"><span class="pill">SQL</span><span class="pill">MS SQL Server</span><span class="pill">Python</span><span class="pill">R</span><span class="pill">JavaScript</span><span class="pill">HTML/CSS</span><span class="pill">Java</span><span class="pill">NoSQL</span></div></div>
+      <div class="skill-card"><div class="skill-icon">⚡</div><div class="skill-title">Microsoft Power Platform</div><div class="skill-pills"><span class="pill">Power BI</span><span class="pill">Power Automate</span><span class="pill">Power Apps</span><span class="pill">Excel Power Query</span></div></div>
+      <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-title">Data & Analytics</div><div class="skill-pills"><span class="pill">Tableau</span><span class="pill">ArcGIS</span><span class="pill">pandas</span><span class="pill">NumPy</span><span class="pill">scikit-learn</span><span class="pill">Streamlit</span></div></div>
+      <div class="skill-card"><div class="skill-icon">⚙️</div><div class="skill-title">Methods & Process</div><div class="skill-pills"><span class="pill">Business Analysis</span><span class="pill">Agile / Scrum</span><span class="pill">UAT</span><span class="pill">Requirements Elicitation</span><span class="pill">System Integration</span><span class="pill">Process Automation</span></div></div>
+      <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-title">AI & Emerging Tech</div><div class="skill-pills"><span class="pill">AI Chatbot Dev</span><span class="pill">Transcript OCR</span><span class="pill">Machine Learning</span><span class="pill">NLP</span><span class="pill">OpenCV</span></div></div>
     </div>
   </section>
 
@@ -445,7 +363,6 @@
         <div class="exp-nav-item">Systems Analyst Asst · UTPB</div>
       </div>
       <div class="exp-entries reveal" style="transition-delay:0.1s">
-
         <div class="exp-entry">
           <div class="exp-top">
             <div class="exp-role">Business &amp; Application Analyst <span class="exp-badge">⭐ Exceeds Expectations</span></div>
@@ -455,54 +372,41 @@
           <div class="exp-meta">Dept: Information Technology Services &nbsp;·&nbsp; FY2026 Rating: 4.13 / 5.0</div>
           <ul class="exp-list">
             <li>Key contributor to EAB → Slate/Stellic enterprise replacement: <strong>~$500K annual savings</strong> through university-wide CRM and degree audit modernization</li>
+            <li><strong>Led development of Slate Internal Graduate Application</strong> — full lifecycle ownership from requirements gathering through development, testing, go-live, and training; replaced ApplyTexas as the primary graduate admissions portal</li>
             <li>Co-delivered unified <strong>Student Portal &amp; Faculty Portal</strong>, consolidating access across academic, admin, and advising systems</li>
             <li>Collaborated with system administrators on <strong>SSO migration</strong> (Shibboleth → Azure AD), focusing on cross-system communication and workflow alignment for PeopleSoft, Slate &amp; Canvas</li>
             <li>Contributed to <strong>FalconID provisioning automation</strong> — integrating systems to reduce student access turnaround from ~72 hours to under 15 hours</li>
             <li>Built <strong>Power Automate</strong> and <strong>Power Apps</strong> solutions for internal UTPB processes, streamlining workflows across departments</li>
             <li>Developed Common App integration, Graduate Application workflows &amp; <strong>Change of Major API</strong> in Slate</li>
             <li>Assumed expanded ownership of <strong>PeopleSoft CS, Watermark, Ad Astra &amp; Alma</strong> following team restructuring</li>
-            <li>Contributed to <strong>UTPB AI Chatbot</strong> and Transcript OCR, piloting AI tools in student-facing services</li>
             <li>Authored functional requirements, use cases, validation plans &amp; supported full UAT and post-launch cycles</li>
           </ul>
         </div>
-
         <div class="exp-entry">
-          <div class="exp-top">
-            <div class="exp-role">Data Analyst</div>
-            <div class="exp-date">May 2022 — Present</div>
-          </div>
+          <div class="exp-top"><div class="exp-role">Data Analyst</div><div class="exp-date">May 2022 — Present</div></div>
           <div class="exp-org">Midland-Odessa Transportation Alliance (MOTRAN) — Midland, TX</div>
           <ul class="exp-list">
-            <li>Produced the <strong>Permian at a Glance</strong> statistical report — a publicly published regional resource on the official MOTRAN website, used by oil companies, city chambers, and planning districts</li>
+            <li>Produced the <strong>Permian at a Glance</strong> statistical report — publicly published on the official MOTRAN website, used by oil companies, city chambers, and planning districts</li>
             <li>Collected, cleaned, and analyzed regional transportation datasets using <strong>Excel, MySQL, R &amp; Tableau</strong></li>
-            <li>Developed dashboards and visualizations; presented data-driven findings to regional stakeholders</li>
+            <li>Developed dashboards and visualizations; presented findings to regional stakeholders</li>
           </ul>
         </div>
-
         <div class="exp-entry">
-          <div class="exp-top">
-            <div class="exp-role">Database / Web Administrator</div>
-            <div class="exp-date">Dec 2022 — Jan 2023</div>
-          </div>
+          <div class="exp-top"><div class="exp-role">Database / Web Administrator</div><div class="exp-date">Dec 2022 — Jan 2023</div></div>
           <div class="exp-org">City of Odessa — Odessa, TX</div>
           <ul class="exp-list">
             <li>Administered the <strong>ArcGIS portal</strong>; built a collaborative community platform via ArcGIS Hub</li>
             <li>Managed Geo-Intelligence databases; performed geospatial analysis with <strong>Python &amp; ArcGIS</strong></li>
           </ul>
         </div>
-
         <div class="exp-entry">
-          <div class="exp-top">
-            <div class="exp-role">Systems Analyst Assistant</div>
-            <div class="exp-date">Nov 2019 — May 2020</div>
-          </div>
+          <div class="exp-top"><div class="exp-role">Systems Analyst Assistant</div><div class="exp-date">Nov 2019 — May 2020</div></div>
           <div class="exp-org">University of Texas Permian Basin — Odessa, TX</div>
           <ul class="exp-list">
             <li>Developed <strong>SQL queries and Power BI reports</strong> for administrative and operational insights</li>
             <li>Redesigned departmental websites; created system diagrams and process flowcharts for documentation</li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
@@ -516,120 +420,110 @@
       <p class="sec-sub">Published research, enterprise initiatives, and personal technical projects — ordered by relevance.</p>
     </div>
 
-    <!-- Featured -->
+    <!-- FEATURED 1: EAB Replacement -->
     <div class="reveal">
-      <div class="proj-featured">
+      <div class="proj-featured feat-dark">
         <div>
           <div class="proj-featured-badge">Featured Enterprise Initiative</div>
           <div class="proj-featured-title">EAB → Slate / Stellic Enterprise Replacement</div>
           <p class="proj-featured-desc">Contributed to the full lifecycle of a university-wide CRM and degree audit platform overhaul — replacing EAB Navigate with Slate CRM and Stellic Degree Audit. Modernized admissions, advising, and student success workflows across the entire institution.</p>
-          <div class="proj-tags">
-            <span class="proj-tag">Slate CRM</span><span class="proj-tag">Stellic</span>
-            <span class="proj-tag">PeopleSoft</span><span class="proj-tag">ERP Migration</span>
-            <span class="proj-tag">UAT</span><span class="proj-tag">Business Analysis</span>
-          </div>
+          <div class="proj-tags"><span class="proj-tag">Slate CRM</span><span class="proj-tag">Stellic</span><span class="proj-tag">PeopleSoft</span><span class="proj-tag">ERP Migration</span><span class="proj-tag">UAT</span><span class="proj-tag">Business Analysis</span></div>
           <a class="proj-link-light" href="#contact">Institutional Project — Contact for Details →</a>
         </div>
         <div class="proj-feat-stats">
+          <div class="proj-feat-stat"><div class="proj-feat-stat-num">$500K</div><div class="proj-feat-stat-label">Annual Cost Savings</div></div>
+          <div class="proj-feat-stat"><div class="proj-feat-stat-num">72h → &lt;15h</div><div class="proj-feat-stat-label">ID Provisioning Time</div></div>
+          <div class="proj-feat-stat"><div class="proj-feat-stat-num">3 Platforms</div><div class="proj-feat-stat-label">SSO Migration Scope</div></div>
+          <div class="proj-feat-stat"><div class="proj-feat-stat-num">15+</div><div class="proj-feat-stat-label">Sub-Initiatives Delivered</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURED 2: Slate Graduate Application -->
+    <div class="reveal" style="transition-delay:0.1s">
+      <div class="proj-featured feat-slate">
+        <div>
+          <div class="proj-featured-badge">Featured Project — Led End to End</div>
+          <div class="proj-featured-title">Slate Internal Graduate Application</div>
+          <div class="proj-featured-context">Replaced ApplyTexas as UTPB's primary graduate admissions portal</div>
+          <p class="proj-featured-desc">UTPB was fully dependent on ApplyTexas for graduate admissions. When ApplyTexas underwent a major update causing frequent outages and maintenance windows, it directly impacted application intake and enrollment continuity. I identified the problem, led requirements gathering with Graduate Studies, and took full ownership of designing and building a Slate-hosted graduate application — giving the university complete internal control over its admissions pipeline for the first time.</p>
+          <div class="lifecycle">
+            <div class="lifecycle-step"><div class="lifecycle-num">1</div>Problem identification &amp; stakeholder alignment</div>
+            <div class="lifecycle-step"><div class="lifecycle-num">2</div>Requirements gathering with Graduate Studies</div>
+            <div class="lifecycle-step"><div class="lifecycle-num">3</div>Application design &amp; development in Slate</div>
+            <div class="lifecycle-step"><div class="lifecycle-num">4</div>PeopleSoft &amp; system integrations (with UTSIS)</div>
+            <div class="lifecycle-step"><div class="lifecycle-num">5</div>End-to-end UAT with Graduate Studies team</div>
+            <div class="lifecycle-step"><div class="lifecycle-num">6</div>Go-live, active support, training &amp; documentation</div>
+          </div>
+          <div class="proj-tags" style="margin-top:1rem"><span class="proj-tag">Slate CRM</span><span class="proj-tag">PeopleSoft Integration</span><span class="proj-tag">Requirements Gathering</span><span class="proj-tag">UAT</span><span class="proj-tag">System Integration</span><span class="proj-tag">Training</span></div>
+          <a class="proj-link-dark-feat" href="#contact">Institutional Project — Contact for Details →</a>
+        </div>
+        <div class="proj-feat-stats">
           <div class="proj-feat-stat">
-            <div class="proj-feat-stat-num">$500K</div>
-            <div class="proj-feat-stat-label">Annual Cost Savings</div>
+            <div class="proj-feat-stat-num">Immediate</div>
+            <div class="proj-feat-stat-label">Application Receipt — No File Transfer Delay</div>
           </div>
           <div class="proj-feat-stat">
-            <div class="proj-feat-stat-num">72h → &lt;15h</div>
-            <div class="proj-feat-stat-label">ID Provisioning Time</div>
+            <div class="proj-feat-stat-num">100%</div>
+            <div class="proj-feat-stat-label">Internal Control — No 3rd Party Dependency</div>
           </div>
           <div class="proj-feat-stat">
-            <div class="proj-feat-stat-num">3 Platforms</div>
-            <div class="proj-feat-stat-label">SSO Migration Scope</div>
+            <div class="proj-feat-stat-num">Zero</div>
+            <div class="proj-feat-stat-label">ApplyTexas Outage Impact on Enrollment</div>
           </div>
           <div class="proj-feat-stat">
-            <div class="proj-feat-stat-num">15+</div>
-            <div class="proj-feat-stat-label">Sub-Initiatives Delivered</div>
+            <div class="proj-feat-stat-num">Full Lifecycle</div>
+            <div class="proj-feat-stat-label">Requirements → Dev → UAT → Training → Go-Live</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="proj-grid reveal" style="transition-delay:0.1s">
-
-      <!-- 01 Permian Basin Report -->
+    <!-- PROJECT GRID -->
+    <div class="proj-grid reveal" style="transition-delay:0.15s">
       <div class="proj-card">
         <div class="proj-num">01 — Published Research</div>
         <div class="proj-title">Permian Basin Statistical Report</div>
         <p class="proj-desc">Comprehensive regional economic analysis covering population, RGDP, oil &amp; gas production, and daily vehicle miles. Published on the official MOTRAN website and used by major oil companies, city chambers, and regional planning districts across the Permian Basin.</p>
-        <div class="proj-tags" style="margin-bottom:0">
-          <span class="proj-tag-dark">R</span><span class="proj-tag-dark">Tableau</span>
-          <span class="proj-tag-dark">Excel</span><span class="proj-tag-dark">ArcGIS</span>
-          <span class="proj-tag-dark">Regional Policy</span>
-        </div>
+        <div class="proj-tags" style="margin-bottom:0"><span class="proj-tag-dark">R</span><span class="proj-tag-dark">Tableau</span><span class="proj-tag-dark">Excel</span><span class="proj-tag-dark">ArcGIS</span><span class="proj-tag-dark">Regional Policy</span></div>
         <a class="proj-link-dark" href="https://motran.org/permian-at-a-glance/" target="_blank">View Published Report →</a>
       </div>
-
-      <!-- 02 Real-time Traffic -->
       <div class="proj-card">
         <div class="proj-num">02 — Data & Visualization</div>
         <div class="proj-title">Real-Time Traffic Analysis</div>
         <p class="proj-desc">Real-time traffic visualization system built for the city of Ann Arbor, Michigan. Processes GPS and vehicle sensor data using Python and visualizes movement patterns in both 2D (D3.js) and 3D (Cesium) to support urban planning and transportation decisions.</p>
-        <div class="proj-tags" style="margin-bottom:0">
-          <span class="proj-tag-dark">Python</span><span class="proj-tag-dark">D3.js</span>
-          <span class="proj-tag-dark">Cesium</span><span class="proj-tag-dark">GPS Data</span>
-          <span class="proj-tag-dark">Transportation</span>
-        </div>
+        <div class="proj-tags" style="margin-bottom:0"><span class="proj-tag-dark">Python</span><span class="proj-tag-dark">D3.js</span><span class="proj-tag-dark">Cesium</span><span class="proj-tag-dark">GPS Data</span><span class="proj-tag-dark">Transportation</span></div>
         <a class="proj-link-dark" href="https://github.com/ShiroW0lf/real-time-traffic-analysis" target="_blank">View on GitHub →</a>
       </div>
-
-      <!-- 03 ExoHunter Thesis -->
       <div class="proj-card">
         <div class="proj-num">03 — M.S. Thesis</div>
         <div class="proj-title">ExoHunter: Exoplanet Detection App</div>
         <div class="proj-thesis-badge">Master's Thesis — UTPB 2025</div>
         <p class="proj-desc">Advanced ML application that detects exoplanets from stellar light curve data using KNN, SVM, Random Forest, and ensemble models. Features interactive data exploration, hyperparameter tuning, SMOTE class balancing, and a full exoplanet candidate hunting workflow built with Streamlit.</p>
-        <div class="proj-tags" style="margin-bottom:0">
-          <span class="proj-tag-dark">Python</span><span class="proj-tag-dark">scikit-learn</span>
-          <span class="proj-tag-dark">Streamlit</span><span class="proj-tag-dark">ML</span>
-          <span class="proj-tag-dark">Data Science</span>
-        </div>
+        <div class="proj-tags" style="margin-bottom:0"><span class="proj-tag-dark">Python</span><span class="proj-tag-dark">scikit-learn</span><span class="proj-tag-dark">Streamlit</span><span class="proj-tag-dark">ML</span><span class="proj-tag-dark">Data Science</span></div>
         <a class="proj-link-dark" href="https://github.com/ShiroW0lf/ExoProj" target="_blank">View on GitHub →</a>
       </div>
-
-      <!-- 04 EmoBot -->
       <div class="proj-card">
         <div class="proj-num">04 — AI / NLP</div>
         <div class="proj-title">EmoBot — AI Emotion Detector for Kids</div>
-        <p class="proj-desc">Interactive educational app that teaches children about AI and emotion recognition through a gamified, kid-friendly interface. Features real-time NLP emotion detection, a training interface where kids teach the AI, badges and challenges, classroom progress tracking via SQLite, and completion certificates.</p>
-        <div class="proj-tags" style="margin-bottom:0">
-          <span class="proj-tag-dark">Python</span><span class="proj-tag-dark">scikit-learn</span>
-          <span class="proj-tag-dark">NLP</span><span class="proj-tag-dark">Tkinter</span>
-          <span class="proj-tag-dark">SQLite</span>
-        </div>
+        <p class="proj-desc">Interactive educational app that teaches children about AI and emotion recognition through a gamified interface. Features real-time NLP emotion detection, a training interface where kids teach the AI, badges, classroom progress tracking via SQLite, and completion certificates.</p>
+        <div class="proj-tags" style="margin-bottom:0"><span class="proj-tag-dark">Python</span><span class="proj-tag-dark">scikit-learn</span><span class="proj-tag-dark">NLP</span><span class="proj-tag-dark">Tkinter</span><span class="proj-tag-dark">SQLite</span></div>
         <a class="proj-link-dark" href="https://github.com/ShiroW0lf/EmoBot" target="_blank">View on GitHub →</a>
       </div>
-
-      <!-- 05 Road Lane -->
       <div class="proj-card">
         <div class="proj-num">05 — Computer Vision</div>
         <div class="proj-title">Road Lane Detector</div>
         <p class="proj-desc">Real-time lane detection system for autonomous vehicles using Python, OpenCV, Canny edge detection, and Hough line transforms. Processes live video frame-by-frame to identify lane markings in driving footage.</p>
-        <div class="proj-tags" style="margin-bottom:0">
-          <span class="proj-tag-dark">Python</span><span class="proj-tag-dark">OpenCV</span>
-          <span class="proj-tag-dark">Machine Learning</span><span class="proj-tag-dark">Computer Vision</span>
-        </div>
+        <div class="proj-tags" style="margin-bottom:0"><span class="proj-tag-dark">Python</span><span class="proj-tag-dark">OpenCV</span><span class="proj-tag-dark">Machine Learning</span><span class="proj-tag-dark">Computer Vision</span></div>
         <a class="proj-link-dark" href="https://github.com/ShiroW0lf/RoadLaneDetection" target="_blank">View on GitHub →</a>
       </div>
-
-      <!-- 06 Battleship -->
       <div class="proj-card">
         <div class="proj-num">06 — Game Dev</div>
         <div class="proj-title">Pirate Battleship Game</div>
         <p class="proj-desc">A pirate-themed Battleship game built in Python — a fun personal project that practices object-oriented programming, game state management, and CLI interface design. Because not every project has to save a university.</p>
-        <div class="proj-tags" style="margin-bottom:0">
-          <span class="proj-tag-dark">Python</span><span class="proj-tag-dark">OOP</span>
-          <span class="proj-tag-dark">Game Dev</span><span class="proj-tag-dark">CLI</span>
-        </div>
+        <div class="proj-tags" style="margin-bottom:0"><span class="proj-tag-dark">Python</span><span class="proj-tag-dark">OOP</span><span class="proj-tag-dark">Game Dev</span><span class="proj-tag-dark">CLI</span></div>
         <a class="proj-link-dark" href="https://github.com/ShiroW0lf/PirateBattleShipGame" target="_blank">View on GitHub →</a>
       </div>
-
     </div>
 
     <div style="margin-top:1.5rem; text-align:center;" class="reveal">
@@ -645,22 +539,10 @@
       <h2 class="sec-title">Impact at <em>a Glance</em></h2>
     </div>
     <div class="ach-grid reveal">
-      <div class="ach-cell">
-        <div class="ach-num" data-target="500" data-prefix="$" data-suffix="K">$0K</div>
-        <div class="ach-label">Annual Cost Savings Delivered</div>
-      </div>
-      <div class="ach-cell">
-        <div class="ach-num" data-target="15" data-suffix="+">0</div>
-        <div class="ach-label">Enterprise Initiatives</div>
-      </div>
-      <div class="ach-cell">
-        <div class="ach-num" data-target="15" data-prefix="<" data-suffix="h">0</div>
-        <div class="ach-label">ID Provisioning Time (was 72h)</div>
-      </div>
-      <div class="ach-cell">
-        <div class="ach-num" data-target="4.13" data-suffix="/5">0</div>
-        <div class="ach-label">FY2026 Performance Rating</div>
-      </div>
+      <div class="ach-cell"><div class="ach-num" data-target="500" data-prefix="$" data-suffix="K">$0K</div><div class="ach-label">Annual Cost Savings Delivered</div></div>
+      <div class="ach-cell"><div class="ach-num" data-target="15" data-suffix="+">0</div><div class="ach-label">Enterprise Initiatives</div></div>
+      <div class="ach-cell"><div class="ach-num" data-target="15" data-prefix="<" data-suffix="h">0</div><div class="ach-label">ID Provisioning Time (was 72h)</div></div>
+      <div class="ach-cell"><div class="ach-num" data-target="4.13" data-suffix="/5">0</div><div class="ach-label">FY2026 Performance Rating</div></div>
     </div>
   </section>
 
@@ -681,7 +563,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2025 <span>Aswin Lohani</span>. All rights reserved.</p>
     <p>Odessa, TX &nbsp;·&nbsp; Originally from <span>Nepal 🏔️</span></p>
@@ -690,22 +571,16 @@
   <script>
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); });
-
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
     }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
     function countUp(el) {
-      const target = parseFloat(el.dataset.target);
-      const prefix = el.dataset.prefix || '';
-      const suffix = el.dataset.suffix || '';
-      const isFloat = target % 1 !== 0;
-      const dur = 1200; let t0 = null;
+      const target = parseFloat(el.dataset.target), prefix = el.dataset.prefix || '', suffix = el.dataset.suffix || '';
+      const isFloat = target % 1 !== 0, dur = 1200; let t0 = null;
       function step(ts) {
         if (!t0) t0 = ts;
-        const p = Math.min((ts - t0) / dur, 1);
-        const ease = 1 - Math.pow(1 - p, 3);
+        const p = Math.min((ts - t0) / dur, 1), ease = 1 - Math.pow(1 - p, 3);
         const v = isFloat ? (target * ease).toFixed(2) : Math.round(target * ease);
         el.textContent = prefix + v + suffix;
         if (p < 1) requestAnimationFrame(step);
